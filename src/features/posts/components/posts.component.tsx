@@ -45,11 +45,19 @@ export const PostsComponent = () => {
   }, [filteredData, page, pageSize]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <Box minHeight='60vh' display='flex' alignItems='center' justifyContent='center'>
+        Loading...
+      </Box>
+    );
   }
 
   if (!posts) {
-    return <div>No posts...</div>;
+    return (
+      <Box minHeight='60vh' display='flex' alignItems='center' justifyContent='center'>
+        No posts...
+      </Box>
+    );
   }
 
   return (
