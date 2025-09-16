@@ -287,6 +287,11 @@
     "@eslint/core" "^0.15.2"
     levn "^0.4.1"
 
+"@fontsource/roboto@^5.2.7":
+  version "5.2.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-5.2.7.tgz#4c8e06c6abf17bc6c18cd8b1ce26112803346c9c"
+  integrity sha512-fca6Jtyxn6kPR51+TTTMCFm0FOhnKaLEYYiAQc8P/4iFCKoKGR0aX89QR4CfP+N64RPXJus64UxhJaVENnSM6Q==
+
 "@humanfs/core@^0.19.1":
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.1.tgz#17c55ca7d426733fe3c561906b8173c336b40a77"
