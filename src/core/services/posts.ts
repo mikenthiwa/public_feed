@@ -19,10 +19,14 @@ export const postsGetApi = api.injectEndpoints({
         { type: 'Posts' as const, id: 'List' },
       ],
     }),
+    getPost: build.query<PostResponse, number>({
+      query: (id) => `posts/${id}`,
+      providesTags: (_post, _err, id) => [{ type: 'Posts', id }],
+    }),
   }),
 });
 
-export const { useGetPostsQuery } = postsGetApi;
+export const { useGetPostsQuery, useGetPostQuery } = postsGetApi;
 export const {
-  endpoints: { getPosts },
+  endpoints: { getPosts, getPost },
 } = postsGetApi;
