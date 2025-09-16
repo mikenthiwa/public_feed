@@ -10,6 +10,7 @@ import {
   Box,
   Pagination,
 } from '@mui/material';
+import { useRouter } from 'next/navigation';
 import { useGetPostsQuery } from '@/core/services/posts';
 import { SearchComponent } from '@/ui/search.component';
 
@@ -17,6 +18,7 @@ export const PostsComponent = () => {
   const { data: posts, isLoading } = useGetPostsQuery();
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
+  const router = useRouter();
 
   const pageSize = 10;
   const filteredData = useMemo(() => {
@@ -69,7 +71,12 @@ export const PostsComponent = () => {
       </Box>
       <List>
         {paginated.map((post) => (
-          <ListItem className='cursor-pointer' key={post.id} alignItems='flex-start'>
+          <ListItem
+            className='cursor-pointer'
+            key={post.id}
+            alignItems='flex-start'
+            onClick={() => router.push(`/${post.id}`)}
+          >
             <ListItemAvatar>
               <Avatar alt={`Post ${post.id}`} />
             </ListItemAvatar>
