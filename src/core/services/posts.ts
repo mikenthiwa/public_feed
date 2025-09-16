@@ -1,11 +1,5 @@
 import { api } from '@/core/services/api';
-
-interface PostResponse {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-}
+import { PostResponse } from '@/core/common/interfaces/post';
 
 export const postsGetApi = api.injectEndpoints({
   endpoints: (build) => ({
