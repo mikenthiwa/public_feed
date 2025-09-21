@@ -15,7 +15,7 @@ import { useGetPostsQuery } from '@/core/services/posts';
 import { SearchComponent } from '@/ui/search.component';
 
 export const PostsComponent = () => {
-  const { data: posts, isLoading } = useGetPostsQuery();
+  const { data: posts, isLoading, error } = useGetPostsQuery();
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
@@ -56,6 +56,14 @@ export const PostsComponent = () => {
     return (
       <Box className='flex justify-center items-center min-h-screen'>
         <Typography>No posts...</Typography>
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box className='flex justify-center items-center min-h-screen'>
+        <Typography color='error'>Failed to load posts</Typography>
       </Box>
     );
   }
