@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { Fragment, useEffect, useMemo, useState } from 'react';
 import {
   Avatar,
   List,
@@ -46,22 +46,22 @@ export const PostsComponent = () => {
 
   if (isLoading) {
     return (
-      <Box minHeight='60vh' display='flex' alignItems='center' justifyContent='center'>
-        Loading...
+      <Box className='flex justify-center items-center min-h-screen'>
+        <Typography>Loading...</Typography>
       </Box>
     );
   }
 
   if (!posts) {
     return (
-      <Box minHeight='60vh' display='flex' alignItems='center' justifyContent='center'>
-        No posts...
+      <Box className='flex justify-center items-center min-h-screen'>
+        <Typography>No posts...</Typography>
       </Box>
     );
   }
 
   return (
-    <Box>
+    <Fragment>
       <Box
         display='flex'
         alignItems='center'
@@ -113,6 +113,6 @@ export const PostsComponent = () => {
           showLastButton
         />
       </Box>
-    </Box>
+    </Fragment>
   );
 };
