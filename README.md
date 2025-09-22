@@ -48,6 +48,16 @@ Create a .env.local file in the root directory:
 NEXT_PUBLIC_API_BASE_URL=https://jsonplaceholder.typicode.com
 ```
 
+- Run application
+```bash
+yarn dev
+```
+
+- Testing
+```bash
+yarn test
+```
+
 ### Architecture & Approach
 
 The project follows a **feature-based architecture**:
@@ -62,10 +72,7 @@ The project follows a **feature-based architecture**:
 - Having features depend on Core and UI provides a clean flow of data and reduces circular dependencies, but it requires discipline in keeping boundaries clear.
 
 
-- Testing
-```bash
-yarn test
-```
+
 
 ### Given that your application were to be launched globally with 100,000 daily users:
 
