@@ -44,6 +44,10 @@ Follow these steps to set up the project in development mode:
 - Environment Variables
 Create a .env.local file in the root directory:
 
+```
+NEXT_PUBLIC_API_BASE_URL=https://jsonplaceholder.typicode.com
+```
+
 ### Architecture & Approach
 
 The project follows a **feature-based architecture**:
@@ -57,10 +61,6 @@ The project follows a **feature-based architecture**:
 - By ensuring **Core** has no external dependencies, it can be tested in isolation and potentially reused across other projects.
 - Having features depend on Core and UI provides a clean flow of data and reduces circular dependencies, but it requires discipline in keeping boundaries clear.
 
-
-```
-NEXT_PUBLIC_API_BASE_URL=https://jsonplaceholder.typicode.com
-```
 
 - Testing
 ```bash
