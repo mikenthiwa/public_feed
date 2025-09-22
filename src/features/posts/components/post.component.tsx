@@ -1,17 +1,18 @@
 'use client';
 import { useGetPostQuery } from '@/core/services/posts';
-import {
-  Box,
-  Card,
-  CardHeader,
-  CardContent,
-  Divider,
-  Typography,
-  Skeleton,
-} from '@mui/material';
+import { Box, Card, CardHeader, CardContent, Divider, Typography, Skeleton } from '@mui/material';
+import React from 'react';
 
 export const PostComponent = ({ id }: { id: number }) => {
-  const { data: post, isLoading } = useGetPostQuery(id);
+  const { data: post, isLoading, error } = useGetPostQuery(id);
+
+  if (error) {
+    return (
+      <Box className='flex justify-center items-center min-h-screen'>
+        <Typography color='error'>Failed to load a post</Typography>
+      </Box>
+    );
+  }
 
   if (isLoading) {
     return (
@@ -59,11 +60,7 @@ export const PostComponent = ({ id }: { id: number }) => {
         />
         <Divider />
         <CardContent>
-          <Typography
-            variant='body1'
-            color='text.primary'
-            sx={{ whiteSpace: 'pre-wrap' }}
-          >
+          <Typography variant='body1' color='text.primary' sx={{ whiteSpace: 'pre-wrap' }}>
             {post.body}
           </Typography>
         </CardContent>
