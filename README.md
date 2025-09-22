@@ -44,6 +44,20 @@ Follow these steps to set up the project in development mode:
 - Environment Variables
 Create a .env.local file in the root directory:
 
+### Architecture & Approach
+
+The project follows a **feature-based architecture**:
+
+- **Core**: Contains shared logic, types and services. It does not depend on other layers, ensuring it remains lightweight and reusable.
+- **Features**: Each feature encapsulates its state, API hooks, and UI composition. Features depend on **Core** and **UI** layers but not on each other, which reduces coupling and improves scalability.
+- **UI**: Contains shared presentational components (e.g., buttons, layouts, inputs).
+
+#### Trade-offs
+- This separation introduces slightly more boilerplate, but the payoff is in maintainability and testability as the codebase grows.
+- By ensuring **Core** has no external dependencies, it can be tested in isolation and potentially reused across other projects.
+- Having features depend on Core and UI provides a clean flow of data and reduces circular dependencies, but it requires discipline in keeping boundaries clear.
+
+
 ```
 NEXT_PUBLIC_API_BASE_URL=https://jsonplaceholder.typicode.com
 ```
