@@ -1,4 +1,4 @@
-import { PostComponent } from '@/features/posts/components/post.component';
+import { PostComponent } from '@/features/post/components/post.component';
 
 export default async function Page({ params }: { params: { id: number } }) {
   const { id } = await params;

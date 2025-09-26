@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { PostComponent } from '@/features/posts/components/post.component';
+import { PostComponent } from '@/features/post/components/post.component';
 import { PostResponse } from '@/core/common/interfaces/post';
 
 interface MockReturn {
