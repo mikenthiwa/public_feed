@@ -4,6 +4,7 @@ import { PostListComponent } from '@/features/posts/components/post-list.compone
 import { useGetPostsQuery } from '@/core/services/posts';
 import { Box, Pagination, Typography } from '@mui/material';
 import { SearchComponent } from '@/ui/search.component';
+import { CustomErrorComponent } from '@/ui/custom-error.component';
 
 export default function Home() {
   const { data: posts, isLoading, error } = useGetPostsQuery();
@@ -33,29 +34,11 @@ export default function Home() {
     return filteredData.slice(start, start + pageSize);
   }, [filteredData, page, pageSize]);
 
-  if (isLoading) {
-    return (
-      <Box className='flex justify-center items-center min-h-screen'>
-        <Typography>Loading...</Typography>
-      </Box>
-    );
-  }
+  if (isLoading) return <CustomErrorComponent message='Loading...' />;
 
-  if (!posts) {
-    return (
-      <Box className='flex justify-center items-center min-h-screen'>
-        <Typography>No posts...</Typography>
-      </Box>
-    );
-  }
+  if (!posts) return <CustomErrorComponent message='No posts...' />;
 
-  if (error) {
-    return (
-      <Box className='flex justify-center items-center min-h-screen'>
-        <Typography color='error'>Failed to load posts</Typography>
-      </Box>
-    );
-  }
+  if (error) return <CustomErrorComponent message='Failed to load posts' />;
 
   return (
     <Fragment>
