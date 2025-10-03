@@ -42,14 +42,7 @@ export default function Home() {
 
   return (
     <Fragment>
-      <Box
-        display='flex'
-        alignItems='center'
-        justifyContent='space-between'
-        flexWrap='wrap'
-        gap={2}
-        mb={2}
-      >
+      <Box className='flex items-center justify-between flex-wrap gap-2 mb-2'>
         <Typography variant='h4' fontWeight={700} lineHeight={1.2}>
           All Posts
         </Typography>
