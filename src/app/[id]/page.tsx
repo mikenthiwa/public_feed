@@ -1,35 +1,19 @@
-'use client';
-import { PostComponent } from '@/features/post/components/post.component';
-import { useGetPostQuery } from '@/core/services/posts';
-import { Box, Card, CardContent, CardHeader, Divider, Skeleton, Typography } from '@mui/material';
+// 'use client';
 import React from 'react';
+import { PostComponent } from '@/features/post/components/post.component';
+import { postsApi } from '@/core/services/posts';
+import { Box, Card, CardContent, Typography } from '@mui/material';
+import { createStore } from '@/store/store';
 import { CustomErrorComponent } from '@/ui/custom-error.component';
 
-export default function Page({ params }: { params: Promise<{ id: number }> }) {
-  const unwrapped = React.use(params);
-  const { id } = unwrapped;
-  const { data: post, isLoading, error } = useGetPostQuery(id);
+export default async function Page({ params }: { params: Promise<{ id: number }> }) {
+  const id = Number((await params).id);
+
+  const store = createStore();
+  const promise = store.dispatch(postsApi.endpoints.getPost.initiate(id));
+  const { data: post, error } = await promise;
 
   if (error) return <CustomErrorComponent message='Failed to load a post' />;
-
-  if (isLoading) {
-    return (
-      <Box maxWidth={800} mx='auto' mt={4} px={2}>
-        <Card>
-          <CardHeader
-            title={<Skeleton width='60%' height={32} />}
-            subheader={<Skeleton width='30%' />}
-          />
-          <Divider />
-          <CardContent>
-            <Skeleton height={20} />
-            <Skeleton height={20} />
-            <Skeleton height={20} width='80%' />
-          </CardContent>
-        </Card>
-      </Box>
-    );
-  }
 
   if (!post) {
     return (
