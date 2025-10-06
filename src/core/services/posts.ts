@@ -1,7 +1,7 @@
 import { api } from '@/core/services/api';
 import { PostResponse } from '@/core/common/interfaces/post';
 
-export const postsGetApi = api.injectEndpoints({
+export const postsApi = api.injectEndpoints({
   endpoints: (build) => ({
     getPosts: build.query<PostResponse[], void>({
       query: () => ({
@@ -20,7 +20,7 @@ export const postsGetApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetPostsQuery, useGetPostQuery } = postsGetApi;
+export const { useGetPostsQuery, useGetPostQuery } = postsApi;
 export const {
   endpoints: { getPosts, getPost },
-} = postsGetApi;
+} = postsApi;
