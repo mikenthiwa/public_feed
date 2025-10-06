@@ -1,11 +1,11 @@
-'use client';
+// 'use client';
 import React from 'react';
 import { Avatar, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { PostResponse } from '@/core/common/interfaces/post';
 
 export const PostListComponent = ({ posts }: { posts: PostResponse[] }) => {
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <List>
@@ -14,7 +14,7 @@ export const PostListComponent = ({ posts }: { posts: PostResponse[] }) => {
           className='cursor-pointer'
           key={post.id}
           alignItems='flex-start'
-          onClick={() => router.push(`/${post.id}`)}
+          // onClick={() => router.push(`/${post.id}`)}
         >
           <ListItemAvatar>
             <Avatar alt={`Post ${post.id}`} />
