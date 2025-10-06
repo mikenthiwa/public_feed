@@ -1,6 +1,4 @@
-'use client';
 import { Box, Card, CardHeader, CardContent, Divider, Typography } from '@mui/material';
-import React from 'react';
 import { PostResponse } from '@/core/common/interfaces/post';
 
 export const PostComponent = ({ post }: { post: PostResponse }) => {
