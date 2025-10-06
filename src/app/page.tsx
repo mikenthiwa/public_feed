@@ -17,12 +17,9 @@ export default async function Home({
 
   const store = createStore();
   const promise = store.dispatch(postsApi.endpoints.getPosts.initiate());
-  const { data: posts, isLoading, error } = await promise;
-  if (isLoading) return <CustomErrorComponent message='Loading...' />;
+  const { data: posts } = await promise;
 
   if (!posts) return <CustomErrorComponent message='No posts...' />;
-
-  if (error) return <CustomErrorComponent message='Failed to load posts' />;
 
   const pageSize = 10;
 
